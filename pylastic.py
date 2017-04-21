@@ -7,7 +7,11 @@ class pylastic:
         self.es = Elasticsearch([url])
 
     def sendTweet(self, index, doc_type, id, doc):
-        res = self.es.index(index=index, doc_type=doc_type, id=id, body=doc)
+        try:
+            print(index)
+            res = self.es.index(index=index, doc_type=doc_type, id=id, body=doc)
+        except BaseException as e:
+            print(str(e))
 
 """
 
